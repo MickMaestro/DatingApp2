@@ -10,6 +10,7 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './members/member-list/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsavedchanges.guard';
+import { ListResolver } from './_resolvers/lists.resolver';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
@@ -24,7 +25,7 @@ export const appRoutes: Routes = [
             resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             // added a link in the nav bar for the user to be able to edit their profile
             { path: 'messages', component: MessagesComponent},
-            { path: 'lists', component: ListsComponent},
+            { path: 'lists', component: ListsComponent, resolve: {users: ListResolver}},
         ]
     },
     { path: '**', redirectTo: 'home', pathMatch: 'full'},
