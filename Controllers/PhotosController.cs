@@ -119,7 +119,7 @@ namespace DatingApp.API.Controllers
                 return BadRequest("This is already the main photo");
             }
 
-            var currentMainPhoto = await _reppy.GetMainPhotoPhotoForUser(userId);// get current main photo from the repository and make the new pic the main one
+            var currentMainPhoto = await _reppy.GetMainPhotoForUser(userId);// get current main photo from the repository and make the new pic the main one
             currentMainPhoto.IsMain = false;// set previous pic status to not main
 
             photoFromRepo.IsMain = true;// set new pic status to be main
